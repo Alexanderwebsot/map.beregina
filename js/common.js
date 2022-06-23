@@ -140,6 +140,14 @@ $(document).ready(function () {
   	})
   })
 
+  if ($(window).width() < 768) {
+    
+    $('.map-scrool').scrollLeft(100);
+  }
+  if ($(window).width() < 400) {
+    $('.map-scrool').scrollLeft(120);
+  }
+
   $('#map-select').on('change', function() {
   	let map_select = $('#map-select').val()
   	let paths_map = $('.map-scrool-svg path');
