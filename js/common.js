@@ -1,15 +1,11 @@
 $(document).ready(function () {
-  alert('Тест 2')
-  if ($(window).width() < 768 && $(window).width() > 400) {
-    $('.map-scrool').scrollLeft(100);
-  }
-  if ($(window).width() < 400 ) {
-    $('.map-scrool').scrollLeft(120);
-  }
+  //alert('Тест 5')
+  var outerContent = $('.map-scrool');
+  var innerContent = $('.map-scrool-wrapp');
+  outerContent.scrollLeft((innerContent.width() - outerContent.width()) / 2);    
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
-
   $(".phone").mask("+7 (999) 999-9999");
 
   
