@@ -1,8 +1,27 @@
 $(document).ready(function () {
+  alert('Тест')
+  if (jQuery(window).width() < 768) {
+    $('.map-scrool').scrollLeft(100);
+  }
+  if (jQuery(window).width() < 400 ) {
+    $('.map-scrool').scrollLeft(120);
+  }
+  window.addEventListener('resize', function(event) {
+    if (jQuery(window).width() < 768) {
+      $('.map-scrool').scrollLeft(100);
+    }
+    if (jQuery(window).width() < 400 ) {
+      $('.map-scrool').scrollLeft(120);
+    }
+  }, true);
+
+
   $('#map-select').selectize();
   $('#map-select-form').selectize();
 
   $(".phone").mask("+7 (999) 999-9999");
+
+  
 
   $('.map-btn-price').on('click', function() {
   	$('.map-dark').addClass('active-modal');
@@ -140,13 +159,11 @@ $(document).ready(function () {
   	})
   })
 
-  if ($(window).width() < 768) {
-    
-    $('.map-scrool').scrollLeft(100);
-  }
-  if ($(window).width() < 400) {
-    $('.map-scrool').scrollLeft(120);
-  }
+  
+
+  
+
+  //$('.map-scrool').scrollLeft(map_size);
 
   $('#map-select').on('change', function() {
   	let map_select = $('#map-select').val()
