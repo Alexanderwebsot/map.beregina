@@ -1,20 +1,11 @@
 $(document).ready(function () {
-  alert('Тест')
-  if (jQuery(window).width() < 768) {
+  alert('Тест 2')
+  if ($(window).width() < 768 && $(window).width() > 400) {
     $('.map-scrool').scrollLeft(100);
   }
-  if (jQuery(window).width() < 400 ) {
+  if ($(window).width() < 400 ) {
     $('.map-scrool').scrollLeft(120);
   }
-  window.addEventListener('resize', function(event) {
-    if (jQuery(window).width() < 768) {
-      $('.map-scrool').scrollLeft(100);
-    }
-    if (jQuery(window).width() < 400 ) {
-      $('.map-scrool').scrollLeft(120);
-    }
-  }, true);
-
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
@@ -33,14 +24,12 @@ $(document).ready(function () {
     $('.map-content').toggleClass('map-content-active');
   })
 
-  jQuery(function($){
-    $(document).mouseup( function(e){ // событие клика по веб-документу
-      var div = $( "#map-content" ); // тут указываем ID элемента
-      if ( !div.is(e.target) // если клик был не по нашему блоку
-          && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
-          $('.map-content').removeClass('map-content-active');
-      }
-    });
+  $(document).mouseup( function(e){ // событие клика по веб-документу
+    var div = $( "#map-content" ); // тут указываем ID элемента
+    if ( !div.is(e.target) // если клик был не по нашему блоку
+        && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+        $('.map-content').removeClass('map-content-active');
+    }
   });
 
   $('.map-info__btn').on('click', function() {
@@ -103,7 +92,6 @@ $(document).ready(function () {
   			$('.map-info-block').removeClass('status-bron');
   			$('.map-info-block').removeClass('status-close');
   			$('.map-info-block').removeClass('status-free');
-
   			$('.map-info-block').removeClass('map-info-block-active');
   		})
   	}
@@ -158,12 +146,6 @@ $(document).ready(function () {
   		clearInterval(timer_top);
   	})
   })
-
-  
-
-  
-
-  //$('.map-scrool').scrollLeft(map_size);
 
   $('#map-select').on('change', function() {
   	let map_select = $('#map-select').val()
