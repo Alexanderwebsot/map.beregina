@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  //alert('Тест 5')
+  let counter = 0;
+  let counter_redial = 0;
   var outerContent = $('.map-scrool');
   var innerContent = $('.map-scrool-wrapp');
   outerContent.scrollLeft((innerContent.width() - outerContent.width()) / 2);    
@@ -7,6 +8,40 @@ $(document).ready(function () {
   $('#map-select').selectize();
   $('#map-select-form').selectize();
   $(".phone").mask("+7 (999) 999-9999");
+
+  
+
+  
+  $('.zoom-button--more').on('click', function() {
+    if ($(this).hasClass('map-zoom-active')) {
+      $('.map-inner').addClass('zoom-2x');
+      let outerContent = $('.map-scrool');
+      let innerContent = $('.map-scrool-wrapp');
+      let scrol_now_radial = (innerContent.width() - outerContent.width()) / 2
+      let scrol_now_top = (innerContent.height() - outerContent.height()) / 2
+      counter_redial = scrol_now_radial;
+      counter = scrol_now_top;
+      $('.map-inner').scrollTop(scrol_now_top);
+      $('.map-inner').scrollLeft(scrol_now_radial);   
+      return false;
+    }
+  })
+
+  $('.zoom-button--none').on('click', function() {
+    if ($(this).hasClass('map-zoom-active')) {
+      $('.map-inner').removeClass('zoom-2x');
+      $('.map-inner').scrollTop(0);
+      $('.map-inner').scrollLeft(0);
+      counter_redial = 0;
+      counter = 0;
+      return false;
+    }
+  })
+
+  $('.map-zoom__item').on('click', function() {
+    $('.map-zoom__item').addClass('map-zoom-active');
+    $(this).removeClass('map-zoom-active');
+  })
 
   
 
@@ -94,7 +129,7 @@ $(document).ready(function () {
   	
   })
 
-  let counter = 0;
+  
   $('.bottom').on('mouseover', function(argument) {
   	var timer_bottom = setInterval(function () {
   		counter = counter + 1;
@@ -117,7 +152,7 @@ $(document).ready(function () {
   	})
   })
 
-  let counter_redial = 0;
+  
 
   $('.right').on('mouseover', function(argument) {
   	
