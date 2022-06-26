@@ -10,8 +10,41 @@ $(document).ready(function () {
   $(".phone").mask("+7 (999) 999-9999");
 
   
+  const slider = document.querySelector('.map-inner');
+  let mouseDown = false;
+  let startX, scrollLeft, startY, scrollTop;
 
+  let startDragging = function (e) {
+    mouseDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    startY = e.pageY - slider.offsetTop;
+
+    scrollTop = slider.scrollTop;
+    scrollLeft = slider.scrollLeft;
+  };
+  let stopDragging = function (event) {
+    mouseDown = false;
+  };
+
+  slider.addEventListener('mousemove', (e) => {
+    e.preventDefault();
+    if(!mouseDown) { return; }
+    const x = e.pageX - slider.offsetLeft;
+    const scroll = x - startX;
+
+    const x_y = e.pageY - slider.offsetTop;
+    const scroll_y = x_y - startY;
+
+    slider.scrollTop = scrollTop - scroll_y;
+    slider.scrollLeft = scrollLeft - scroll;
+  });
+
+  // Add the event listeners
+  slider.addEventListener('mousedown', startDragging, false);
+  slider.addEventListener('mouseup', stopDragging, false);
+  slider.addEventListener('mouseleave', stopDragging, false);
   
+
   $('.zoom-button--more').on('click', function() {
     if ($(this).hasClass('map-zoom-active')) {
       $('.map-inner').addClass('zoom-2x');
