@@ -1,4 +1,19 @@
 $(document).ready(function () {
+  window.jsPDF = window.jspdf.jsPDF;
+
+  let img = domtoimage.toJpeg(document.getElementById('map-scrool'), { quality: 0.95 })
+  console.log(img.src)
+  const doc = new jsPDF('p', 'pt', [ 1560, 900])
+  //doc.text("Hello world!", 1, 1);
+  doc.addImage('../img/map.jpg', 'JPEG', 0, 0, 1560, 900);
+
+  $('.map-pdf').on('click', function() {
+    doc.save("two-by-four.pdf");
+    return false;
+  })
+
+  console.log(doc)
+
   let counter = 0;
   let counter_redial = 0;
   let nov_number = 0;
