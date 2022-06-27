@@ -17,10 +17,8 @@ $(document).ready(function () {
   let true_to_click = true;
 
 
-  var outerContent = $('.map-inner');
-  var innerContent = $('.map-scrool-wrapp');
-  $('.map-inner').scrollLeft((innerContent.width() - outerContent.width()) / 2);    
-  alert(((innerContent.width() - outerContent.width()) / 2))
+     
+  
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
