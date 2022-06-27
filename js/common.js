@@ -15,9 +15,12 @@ $(document).ready(function () {
   let counter_redial = 0;
   let nov_number = 0;
   let true_to_click = true;
+
+
   var outerContent = $('.map-scrool');
   var innerContent = $('.map-scrool-wrapp');
-  outerContent.scrollLeft((innerContent.width() - outerContent.width()) / 2);    
+  $('.map-inner').scrollLeft((innerContent.width() - outerContent.width()) / 2);    
+  console.log(((innerContent.width() - outerContent.width()) / 2))
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
@@ -160,7 +163,12 @@ $(document).ready(function () {
     if ($(this).hasClass('map-zoom-active')) {
       $('.map-inner').removeClass('zoom-2x');
       $('.map-inner').scrollTop(0);
-      $('.map-inner').scrollLeft(0);
+      //$('.map-inner').scrollLeft(0);
+
+      let outerContent = $('.map-scrool');
+      let innerContent = $('.map-scrool-wrapp');
+      let scrol_now_radial = (innerContent.width() - outerContent.width()) / 2
+      $('.map-inner').scrollLeft(scrol_now_radial);
       counter_redial = 0;
       counter = 0;
       
