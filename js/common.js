@@ -2,9 +2,7 @@ $(document).ready(function () {
   window.jsPDF = window.jspdf.jsPDF;
 
   let img = domtoimage.toJpeg(document.getElementById('map-scrool'), { quality: 0.95 })
-  console.log(img.src)
   const doc = new jsPDF('p', 'pt', [ 1560, 900])
-  //doc.text("Hello world!", 1, 1);
   doc.addImage('../img/map.jpg', 'JPEG', 0, 0, 1560, 900);
 
   $('.map-pdf').on('click', function() {
@@ -12,7 +10,6 @@ $(document).ready(function () {
     return false;
   })
 
-  console.log(doc)
 
   let counter = 0;
   let counter_redial = 0;
@@ -186,6 +183,7 @@ $(document).ready(function () {
 
   $('.map-content__arrow').on('click', function() {
     $('.map-content').toggleClass('map-content-active');
+    $('.map').toggleClass('map-content-active-body');
   })
 
   $(document).mouseup( function(e){ // событие клика по веб-документу
@@ -193,6 +191,7 @@ $(document).ready(function () {
     if ( !div.is(e.target) // если клик был не по нашему блоку
         && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
         $('.map-content').removeClass('map-content-active');
+        $('.map').removeClass('map-content-active-body');
     }
   });
 
