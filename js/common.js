@@ -20,7 +20,7 @@ $(document).ready(function () {
   var outerContent = $('.map-scrool');
   var innerContent = $('.map-scrool-wrapp');
   $('.map-inner').scrollLeft((innerContent.width() - outerContent.width()) / 2);    
-  //console.log(((innerContent.width() - outerContent.width()) / 2))
+  alert(((innerContent.width() - outerContent.width()) / 2))
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
