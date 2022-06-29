@@ -24,9 +24,26 @@ $(document).ready(function () {
 
   $('#map-select').selectize();
   $('#map-select-form').selectize();
-  $(".phone").mask("+7 (999) 999-9999");
+  //.mask("+7 (999) 999-9999");
+
+
+  var selector = $(".phone")
+
+  var im = new Inputmask("+7 (999) 999-9999");
+  im.mask(selector);
 
   
+  $('.map-form__politic a').on('click', function() {
+    $('.map-form').removeClass('active-modal');
+    $('.map-dark').removeClass('active-modal');
+    $('.politic-modal-wrapper').addClass('active-modal');
+    return false;
+  })
+
+  $('.map-form__close').on('click', function() {
+    $('.politic-modal-wrapper').removeClass('active-modal');
+  })
+
   $('.form-info-slider').slick({
     infinite: false,
     slidesToShow: 1,
@@ -203,6 +220,14 @@ $(document).ready(function () {
     }
   });
 
+  $(document).mouseup( function(e){ // событие клика по веб-документу
+    var div = $( "#modal-politic" ); // тут указываем ID элемента
+    if ( !div.is(e.target) // если клик был не по нашему блоку
+        && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+        $('.politic-modal-wrapper').removeClass('active-modal');
+    }
+  });
+
   $('.map-info__btn').on('click', function() {
   	$('.map-dark').addClass('active-modal');
   	$('.map-form--excursion').addClass('active-modal');
@@ -325,6 +350,9 @@ $(document).ready(function () {
   })
 
   $('#map-select').on('change', function() {
+    $('.map-content').removeClass('map-content-active');
+    $('.map').removeClass('map-content-active-body');
+
   	let map_select = $('#map-select').val()
   	let paths_map = $('.map-scrool-svg path');
   	$(paths_map).removeClass('path-none');
